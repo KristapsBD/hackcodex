@@ -4,7 +4,7 @@ import time
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
 
-from azure.storage.blob import BlobServiceClient
+# from azure.storage.blob import BlobServiceClient
 
 from datetime import datetime
 
@@ -21,17 +21,18 @@ def index():
    return render_template('index.html')
 
 @app.route('/upload', methods=['POST'])
-def uploadToBlobStorage():
-   file = request.files['myFile']
-   uniqueFileName = datetime.now().strftime("%H:%M:%S") + file.filename
-   blob_service_client = BlobServiceClient.from_connection_string(connection_string)
-   blob_client = blob_service_client.get_blob_client(container = container_name, blob = uniqueFileName)
-   with file.stream as data:
-    blob_client.upload_blob(data = data)
 
-    time.sleep(1.5)
+# def uploadToBlobStorage():
+#    file = request.files['myFile']
+#    uniqueFileName = datetime.now().strftime("%H:%M:%S") + file.filename
+#    blob_service_client = BlobServiceClient.from_connection_string(connection_string)
+#    blob_client = blob_service_client.get_blob_client(container = container_name, blob = uniqueFileName)
+#    with file.stream as data:
+#     blob_client.upload_blob(data = data)
 
-   return redirect(url_for('index'))
+#     time.sleep(1.5)
+
+#    return redirect(url_for('index'))
 
 @app.route('/favicon.ico')
 def favicon():
