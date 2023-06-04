@@ -3,12 +3,21 @@ import time
 
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
-
 from azure.storage.blob import BlobServiceClient
-
 from datetime import datetime
+import urllib.parse 
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+
+# Configure Database URI: 
+params = urllib.parse.quote_plus("Driver={ODBC Driver 18 for SQL Server};Server=tcp:databasehackx.database.windows.net,1433;Database=databasehackx;Uid=CloudSAc66b69ee;Pwd={KriksisPuksis123!};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30");
+
+# initialization
+app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc:///?odbc_connect=%s" % params
+
+# extensions
+db = SQLAlchemy(app)
 
 storage_account_key = "oGGBil47vhK+ElVNNQIWnXYcQ1LloABCXZNSJe1sYOfaN0UuJVDQFEt9m1N+GnHEAB5J2Dp61bhQ+AStI4ncDg=="
 storage_account_name = "hackxstorage"
@@ -18,6 +27,7 @@ container_name = "pictures"
 @app.route('/')
 def index():
    print('Request for index page received')
+   print(db)
    return render_template('index.html')
 
 @app.route('/upload', methods=['POST'])

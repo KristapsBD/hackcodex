@@ -61,7 +61,7 @@ function showPopup(){
         popup.style.display = 'block';
         setTimeout(function() {
             element.style.display = 'none';
-        }, 1500);
+        }, 5000);
     } catch (error) {
         console.log(error);
     }
