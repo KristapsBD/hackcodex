@@ -48,18 +48,21 @@ function updateThumbnail(dropZoneElement, file) {
         dropZoneElement.querySelector(".drop-zone__prompt").remove();
     }
 
-    // First time - there is no thumbnail element, so lets create it
-    // if (!thumbnailElement) {
-    //     thumbnailElement = document.createElement("div");
-    //     thumbnailElement.classList.add("drop-zone__thumb");
-    //     dropZoneElement.appendChild(thumbnailElement);
-    // }
-
-    // thumbnailElement.dataset.label = file.name;
-
     // Show confirmation message
     const confirmationElement = document.createElement("div");
     confirmationElement.classList.add("drop-zone__confirmation");
-    confirmationElement.textContent = "Files uploaded successfully!";
+    confirmationElement.textContent = "Files received, please submit!";
     dropZoneElement.appendChild(confirmationElement);
+}
+
+function showPopup(){
+    try {
+        let popup = document.getElementById('success-popup');
+        popup.style.display = 'block';
+        setTimeout(function() {
+            element.style.display = 'none';
+        }, 1500);
+    } catch (error) {
+        console.log(error);
+    }
 }

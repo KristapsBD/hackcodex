@@ -9,13 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.112.5">
-  <title>Heroes · Bootstrap v5.3</title>
-
-  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/heroes/">
-
-
-
-
+  <title>Extraxtor</title>
 
   <link href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -110,9 +104,6 @@
     }
   </style>
 
-
-  <!-- Custom styles for this template -->
-  <link href="heroes.css" rel="stylesheet">
 </head>
 
 <body>
@@ -186,6 +177,9 @@
 
 
   <main>
+    <div class="alert alert-success" id="success-popup" role="alert" style="display: none; position: absolute; top: 0; width: 100%; text-align: center;">
+      Files successfully uploaded! :)
+    </div>
     <div class="px-4 pt-5 my-5 text-center border-bottom">
       <h1 class="display-4 fw-bold text-body-emphasis">Introducing Extraxtor</h1>
       <div class="col-lg-6 mx-auto">
@@ -198,10 +192,13 @@
       </div>
       <div class="overflow-hidden">
         <div class="container px-5 d-flex justify-content-sm-center mb-5">
-          <div class="drop-zone">
-            <span class="drop-zone__prompt">Drop file here or click to upload</span>
-            <input type="file" name="myFile" class="drop-zone__input">
-          </div>
+          <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="drop-zone">
+              <span class="drop-zone__prompt">Drop file here or click to upload</span>
+              <input type="file" name="myFile" class="drop-zone__input">
+            </div>
+            <input type="submit" value="Submit" class="mt-3" onclick="showPopup()">
+          </form>
         </div>
       </div>
     </div>
