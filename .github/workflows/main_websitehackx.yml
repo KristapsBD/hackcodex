@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'websitehackx'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_90CA44CDC4954B03874F99D0D56983DC }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_936136C1337943BE966A9A1F918BC8A7 }}
